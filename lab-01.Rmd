@@ -168,11 +168,11 @@ visitors %>%
 _Perform the same calculation for the 2021 admissions data._
 
 ```{r Ex_h}
-#visitors %>% 
-#  ______(
-#    __________,
-#    __________
-#  )
+visitors %>% 
+  summarise(
+    mean_2021 = mean(n_2021, na.rm = TRUE),
+    med_2021 = median(n_2021, na.rm = TRUE)
+  )
 ```
 
 All values in the output are `NA`!
@@ -181,8 +181,7 @@ All values in the output are `NA`!
 
 _What does `NA` stand for and why are you getting this as your answer to the previous question._
 
-**Write your answer here**
-
+NA stands for Not Available and this is because there are attractions for which there is no n_2021 value in the data set.
 
 
 
@@ -190,8 +189,7 @@ _What does `NA` stand for and why are you getting this as your answer to the pre
 
 _Look at the help pages for the `mean()` and `median()` commands to see what the input argument `na.rm` does. Edit your code from exercise h so that it computes the summary statistics where data is available._
 
-**Write your answer here**
-
+Edited above
 
 
 
@@ -212,8 +210,7 @@ visitors %>%
 
 _Observe in question 6 that the mean statistics across all settings are much larger than the corresponding median statistics. Discuss in your group what this suggests about the data._
 
-**Write your answer here**
-
+The mean statistics are skewed by a few attractions which received a huge number of visitors eg Kew Gardens, Royal Parks Windsor. The vast majority of attractions are more local and received a much smaller number of visitors meaning that the median remains lower.
 
 
 
@@ -245,10 +242,10 @@ _How many tourist attractions are there in each of the 4 nations? From this, dis
 
 
 ```{r Ex_l}
-#________ %>%
-#  ______(_______)
+visitors_with_nations %>%
+  count(nation)
 ```
-
+Northern Ireland's IQR seems overly high for its sole 9 attractions while Scotland's seems particularly low given its comparatively high number of 97 attractions.
 
 
 # Challenging Exercises
